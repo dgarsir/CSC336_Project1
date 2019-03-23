@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href= "{% static 'blog/main.css' %}">
+
+	{% if title %}
+		<title>CCNY Registration- {{ title }}</title>
+	{% else %}
+		<title>CCNY Registration Website</title>
+	{% endif %}
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="w3-top w3-center">
+		 <div class="w3-bar w3-theme-d2">
+		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+		  <a href="{% url 'blog-home' %}" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Home</a>
+		  {% if user.is_authenticated %}
+		  	<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Messages</a>
+		  	<a href="{% url 'post-create' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">New Post</a>
+		  	<a href="{% url 'profile' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Profile</a>
+		  	<a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Logout</a>
+		  {% else %}
+		  	<a href="{% url 'login' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+		  	<a href="{% url 'register' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Register</a>
+		  {% endif %}
+		  <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+		  <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+		  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+		 </div>
+	</nav>
+
+	<div class="w3-container w3-padding-64 w3-center" id="Presentation">
+	<h2>CCNY Registration Website</h2>
+	<p>Submit, Schedule, Done</p>
+	</div>
+<!-- 
+	<div class="scrollmenu w3-bottommiddle">
+	  <a href="#home">Technology</a>
+	  <a href="#news">Shows</a>
+	  <a href="#contact">Music</a>
+	  <a href="#about">Food</a>
+	  <a href="#support">Art & Design</a>
+	  <a href="#blog">Blogging</a>
+	  <a href="#tools">Architecture</a>  
+	  <a href="#base">Travel</a>
+	  <a href="#custom">Games</a>
+	  <a href="#more">Fashion</a>
+	  <a href="#logo">Logo</a>
+	  <a href="#friends">Discussions</a>
+	  <a href="#partners">MeToo</a>
+	  <a href="#people">People</a>
+	  <a href="#work">Outdoors</a>
+	  <a href="#work">News</a>
+	  <a href="#"></a>
+	</div>
+-->
+	<div class = "container">
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+		{% block content %}{% endblock %}
+	</div>
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+.active {
+  background-color: #4CAF50;
+}
+
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+
+.column {
+  float:left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+.row:after {
+  content: " ";
+  display: table;
+  clear:both;
+}
+
+p.paddingtest {
+  padding: 15px;
+}
